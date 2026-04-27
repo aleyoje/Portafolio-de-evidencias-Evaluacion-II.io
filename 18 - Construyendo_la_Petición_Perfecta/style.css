@@ -1,0 +1,55 @@
+body{
+    background-color: #f0f0f0;
+    font-family: Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    height: 100vh;
+}
+
+.contenedor-mujeres {
+    display: flex;
+    gap: 20px;
+    background-color: #efe9e8;
+    padding: 10px 20px;
+    margin: 30px;
+    border-radius: 10px;
+    border: #afbccb 2px solid;
+}   
+
+#tarjeta1, #tarjeta2, #tarjeta3 {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+}
+
+img {
+    width: 80%;
+    height: auto;
+    border-radius: 10%;
+    margin-top: 10px;
+    border: #afbccb 5px dotted;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-style: bold;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+

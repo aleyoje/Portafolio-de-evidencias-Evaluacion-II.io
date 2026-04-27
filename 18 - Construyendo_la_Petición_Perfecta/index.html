@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang = "es">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+
+        <title>Construyendo la Petición Perfecta</title>
+    </head>
+
+    <body>
+        <div class="contenedor-mujeres">
+            <div id="tarjeta1"></div>
+            <div id="tarjeta2"></div>
+            <div id="tarjeta3"></div>
+
+        </div>
+
+        <button onclick="llamarMujeres()">Dame los nombres</button>
+
+        <script>
+            
+            function llamarMujeres() {
+                const ficha = document.querySelector(".contenedor-mujeres");
+                const ficha1 = document.getElementById("tarjeta1");
+                const ficha2 = document.getElementById("tarjeta2");
+                const ficha3 = document.getElementById("tarjeta3");
+
+                fetch("https://randomuser.me/api/?gender=female&results=3&nat=MX")
+                .then(respuesta => respuesta.json())
+                .then(datos => {
+
+                    const mujeres = datos.results;
+                    
+                    ficha1.innerHTML = ` 
+                    <div>
+                        <h1>${mujeres[0].name.first} ${mujeres[0].name.last}</h1>
+                        <h3> Ciudad: ${mujeres[0].location.city}</h3>
+                        <h3> Estado: ${mujeres[0].location.state}</h3>
+                        <p> Usuario linkedin: ${mujeres[0].login.username}</>
+                        <p>${mujeres[0].email}</p>
+                        <img src="${mujeres[0].picture.large}">
+                    </div>
+
+                        `;
+
+                        ficha2.innerHTML = ` 
+                    <div>
+                        <h1>${mujeres[1].name.first} ${mujeres[1].name.last}</h1>
+                        <h3> Ciudad: ${mujeres[1].location.city}</h3>
+                        <h3> Estado: ${mujeres[1].location.state}</h3>
+                        <p> Usuario linkedin: ${mujeres[1].login.username}</p>
+                        <p>${mujeres[1].email}</p>
+                        <img src="${mujeres[1].picture.large}">
+                    </div>
+
+                        `;
+
+                        ficha3.innerHTML = ` 
+                    <div>
+                        <h1>${mujeres[2].name.first} ${mujeres[2].name.last}</h1>
+                        <h3> Ciudad: ${mujeres[2].location.city}</h3>
+                        <h3> Estado: ${mujeres[2].location.state}</h3>
+                        <p> Usuario linkedin: ${mujeres[2].login.username}</p>
+                        <p>${mujeres[2].email}</p>
+                        <img src="${mujeres[2].picture.large}">
+                    </div>
+
+                        `;
+
+                })
+
+                ficha.forEach(datos => {
+                    console.log(datos);
+                })
+
+                .catch(error => {
+                    //5. Manejo de errores (Sí se cae el interfaz )
+                    ficha1.innerHTML = "<p> x Hubo un error:(</p>";
+                    ficha2.innerHTML = "<p> x Hubo un error:(</p>";
+                    ficha3.innerHTML = "<p> x Hubo un error:(</p>";
+                });
+
+            }
+        </script>
+    </body>
+</html>

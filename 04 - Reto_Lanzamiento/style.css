@@ -1,0 +1,74 @@
+body{
+    background-color: rgb(40, 28, 89);
+}
+
+.proyectilBoton{
+    background-color: rgb(218, 63, 32);
+    transform: scale(1);
+    transition: all 0.2s ease-in;
+    border-radius: 20px;
+    position: absolute;
+    z-index: 2;
+    top: 86%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+    padding: 10px 15px;
+    font-size: 15px;
+    font-style: bold;
+    color: white;
+}
+
+.proyectilBoton:hover{
+    background-color: rgb(230, 133, 89);
+    transform:translate(-50%, -50%) scale(1.1);
+}
+
+.boton-verde{
+    background-color: rgb(66, 159, 77);
+}
+
+
+.rocketShip{
+    font-size: 60px;
+    position: absolute;
+    z-index: 1;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: float 5s ease-in-out infinite alternate;
+}
+
+
+@keyframes float {
+    0% {
+        transform: translateX(0px);
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateX(0px);
+        transform: translateY(-15px);
+    }
+    100% {
+        transform: translateX(0px);
+        transform: translateY(0px);
+    }
+}
+
+.despeje{
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: launch 1200ms ease-in-out infinite alternate;
+}
+
+@keyframes launch {
+    0% {
+        transform: translateX(0px);
+        transform: translateY(0px);
+    }
+   
+    100% {
+        transform: translateX(0px);
+        transform: translateY(-900px);
+    }
+}

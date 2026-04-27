@@ -1,0 +1,150 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(255, 238, 160);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+body{
+    background-color: hsl(0, 39%, 15%);
+    background-image: 
+    linear-gradient(
+        -45deg,
+        transparent 75%,
+        hsl(39, 73%, 83%) 50%),
+
+    linear-gradient(
+        45deg,
+        transparent 75%,
+        hsl(39, 73%, 83%) 50%),
+
+    linear-gradient(
+        -135deg,
+        transparent 75%,
+        hsl(39, 73%, 83%) 50%),
+
+        linear-gradient(
+        135deg,
+        transparent 75%,
+        hsl(39, 73%, 83%) 50%);
+
+    background-size: 4rem 4rem;
+}
+
+ 
+ 
+/* El contenedor vacío que JS va a llenar */
+#tarjeta-contenedor {
+    background-color: #8A0000;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(50, 24, 15, 0.575);
+    max-width: 700px;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+ 
+ 
+/* Estilos para el HTML que va a inyectar JS */
+/* .avatar-api {
+    width: 200px;
+    border-radius: 10px;
+    border: 5px solid #5ec0e6;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+} */
+
+img {
+    border-radius: 10px;
+    max-width: 400px;
+    border: 8px solid #47192e;
+}
+
+h2{
+    font-family: "Notable", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#titulo-inicial {
+    font-family: "Notable", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+p{
+    line-height: 30px;
+}
+ 
+/* El Botón */
+button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fadb80;
+    background-color: #4e2c1f; /* Un tono neón para resaltar */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 10px 10px 5px 15px rgba(225, 88, 232, 0.744) 10px 10px 5px 15px rgba(225, 88, 232, 0.744);
+}
+ 
+ 
+button:hover {
+    transform: scale(1.05);
+    background-color: #fa5b26;
+}
+
+/* LA MAGIA DEL SKELETON: AnimaciÃ³n de Pulso */
+.esqueleto {
+    background-color: #fcff61;
+    border-radius: 4px;
+    animation: pulso 1.5s infinite ease-in-out;
+    margin: 0 auto; /* Para centrar */
+}
+
+@keyframes pulso {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+.esq-avatar {
+    width: 150px;
+    height: 300px;
+    border-radius: 10%;
+    margin-bottom: 25px;
+}
+
+.esq-banner {
+    width: 300px;
+    height: 15s0px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.esq-titulo {
+    width: 60%;
+    height: 25px;
+    margin-bottom: 15px;
+}
+
+.esq-texto {
+    width: 80%;
+    height: 15px;
+    /* padding: 20px; */
+}
+
+.oculto {
+    display: none !important;
+}

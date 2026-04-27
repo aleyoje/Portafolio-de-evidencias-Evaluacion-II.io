@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang = "es">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Notable&display=swap" rel="stylesheet">
+
+
+        <title>Conexión API | Fetch</title>
+    </head>
+    <body>
+        <div id="tarjeta-contenedor">
+                    <div id = "titulo-inicial">¿Listo para el maratón de Studios Ghibli?</div>
+        
+                   
+            <div id="estado-carga" class = "oculto">
+        <div class="esqueleto esq-avatar"></div>
+        <div class="esqueleto esq-titulo"></div>
+        <div class="esqueleto esq-banner"></div>
+        <div class="esqueleto esq-texto"></div>
+            </div>
+            
+
+            <div id="estado-listo"></div>
+
+            </div>
+
+        <button onclick="llamarAPI()">Échame la película</button>
+            
+        <script>
+            function llamarAPI() {
+                //const contenedor = document.getElementById("tarjeta-contenedor");
+                
+                
+
+                const carga = document.getElementById("estado-carga");
+                const contenedor = document.getElementById("estado-listo");
+                const titulo = document.getElementById("titulo-inicial");
+
+
+                titulo.classList.add("oculto");
+
+                carga.classList.remove("oculto");
+                contenedor.classList.add("oculto");
+                contenedor.innerHTML = "";
+
+                fetch("https://ghibliapi.vercel.app/films")
+                .then(respuesta => respuesta.json())
+                .then(datos => {
+
+                    const RandomIndex = Math.floor(Math.random() * datos.length);
+                    const peli = datos[RandomIndex];
+                    
+                    //4. Inyectamos nuestro diseño usando Plantillas Literales (semana 7)//
+                    contenedor.innerHTML = ` 
+                    <div>
+                        <img src= "${peli.image}" width="200">
+                        <h2> ${peli.title}</h2>
+                        <img src= "${peli.movie_banner}">
+                        <p> ${peli.description} </p>
+                    </div>
+
+                        `;
+
+
+                        carga.classList.add("oculto");
+                        contenedor.classList.remove("oculto");
+
+                        //console.log(peli)
+
+                })
+
+                .catch(error => {
+
+                    const boton = document.querySelector("button");
+
+                    boton.textContent = "Intenta de nuevo";
+                    //5. Manejo de errores (Sí se cae el interfaz )
+                    contenedor.innerHTML = "<p> Ocurrió un error:(</p>";
+                    carga.classList.add("oculto");
+                    contenedor.classList.remove("oculto");
+
+
+
+                });
+
+            }
+        </script>
+    </body>
+</html>

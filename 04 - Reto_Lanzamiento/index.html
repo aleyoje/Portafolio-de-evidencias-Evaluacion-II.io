@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Reto: Lanzamiento de cohete</title>    
+
+</head>
+
+<body>
+
+    <button class="proyectilBoton" onclick="proyectilBoton()"> Lanzar proyectil</button>
+
+
+            <script>
+                function proyectilBoton() {
+                    let boton = document.querySelector(".proyectilBoton");
+                    let rocket = document.querySelector(".rocketShip");
+
+                    boton.classList.toggle("boton-verde");
+                    
+
+                         if (boton.classList.contains("boton-verde")){
+                          rocket.classList.add("despeje");
+                          
+                        } else {
+                           rocket.classList.remove("despeje");
+                           
+                         }
+                        }
+            </script>
+
+            
+
+    <div class = "rocketShip">🚀</div>
+</body>
+</html>

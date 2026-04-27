@@ -1,0 +1,10 @@
+.btn-magico{
+    background-color: blue;
+    transform: scale(1);
+    transition: all 0.2s ease-in;
+}
+
+.btn-magico:hover{
+    background-color: cyan;
+    transform: scale(1.1);
+}

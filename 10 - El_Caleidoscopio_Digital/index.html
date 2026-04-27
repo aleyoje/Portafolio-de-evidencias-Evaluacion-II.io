@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Arte Generativo</title>
+   
+</head>
+<body>
+ 
+ 
+    <h2>El Pincel de Neón</h2>
+    
+    <canvas id="lienzoArte" width="800" height="500"></canvas>
+ 
+ 
+    <div class="panel">
+        <button onclick="limpiar()">Limpiar Lienzo</button>
+        </div>
+        
+        <button onclick="cambiarColor()">Cambiar Color</button>
+ 
+    <script>
+
+       
+
+         let pallette = [
+             { nombre : "Aqua", hex : "#00FFFF"},
+             { nombre : "UltraViolet", hex : "#8A2BE2"},
+             { nombre : "Chartreuse", hex : "#7FFF00"},
+             { nombre : "Fuchsia", hex : "#FF00FF"}
+         ];
+
+         //pallette.forEach(function(cambiarColor){
+             
+                //pallette[indiceColor].hex
+                
+        //});
+
+         //let contenedoPallette = document.getElementById("lienzoArte");
+         //contenedorPallette.innerHTML +- tarjeta;
+    
+        const canvas = document.getElementById('lienzoArte');
+        const ctx = canvas.getContext('2d');
+ 
+ 
+        let dibujando = false;
+ 
+
+        let lineas = 0.5;
+        let segmentos = 4;
+        let separacion = (Math.PI*2) / segmentos;
+        let centroX = canvas.width / 2;
+        let centroY = canvas.height / 2;
+        let indiceColor = 0;
+ 
+        // Estilo inicial del pincel (¡Modifícalo!)
+        ctx.strokeStyle = pallette[indiceColor].hex;
+        ctx.lineWidth = 1;
+
+ 
+        // Lógica de dibujo
+        function empezar(evento) {
+            dibujando = true;
+            ctx.beginPath();
+            
+            // 👇 RETO 1: Cambia estas coordenadas. 
+            // En lugar de usar la posición del mouse, usa el centro del canvas.
+            ctx.moveTo(centroX, centroY); 
+        }
+
+        function caleidoscopio(x,y) {
+            for (let i = 0; i < segmentos; i++) {
+                ctx.save();
+                ctx.translate(centroX, centroY);
+                ctx.rotate(i * separacion);
+                ctx.translate(-centroX, -centroY);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+
+                ctx.restore(); 
+            }
+        }
+ 
+ 
+        function trazar(evento) {
+            if (!dibujando) return;
+            
+            // La línea viaja hacia donde está el mouse
+                    let x = evento.offsetX;
+                    let y = evento.offsetY;
+
+
+            ctx.beginPath();
+            ctx.moveTo(centroX, centroY);
+            caleidoscopio(x, y);
+
+        }
+ 
+ 
+        function detener() {
+            dibujando = false;
+        }
+ 
+ 
+        function limpiar() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+        
+        function cambiarColor(){
+            ctx.strokeStyle = pallette[indiceColor].hex; 
+            indiceColor++
+            if(indiceColor >= pallette.length){
+                indiceColor = 0;
+                //ctx.strokeStyle = pallette[0].hex;
+                }
+        }
+ 
+        // Eventos
+        canvas.addEventListener('mousedown', empezar);
+        canvas.addEventListener('mousemove', trazar);
+        canvas.addEventListener('mouseup', detener);
+        canvas.addEventListener('mouseout', detener);
+ 
+ 
+    </script>
+</body>
+</html>

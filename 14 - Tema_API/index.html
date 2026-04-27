@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang = "es">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Notable&display=swap" rel="stylesheet">
+
+
+        <title>Conexión API | Fetch</title>
+    </head>
+    <body>
+        <div id="tarjeta-contenedor">
+            <h2>¿Listo para el maratón de Studios Ghibli?</h2>
+        </div>
+
+        <button onclick="llamarAPI()">Échame la película</button>
+
+        <script>
+            function llamarAPI() {
+                const contenedor = document.getElementById("tarjeta-contenedor");
+                //const rueda = document.getElementById("estado-carga")
+
+
+                contenedor.innerHTML = "<p> Viajamos por el multiuniverso...</p>";
+                //1. UX: Mostramos al usuario  que estamos cargando //
+
+                //2. Generamos un número aletario del 1 al 826 (Total de personaje)//
+
+                //contenedor.innerHTML = "<p> Viajando por el catálogo...</p>";
+
+                //3.Enviamos a nuestro "mensajero" a la URL de la API//
+                //let idAleatorio = Math.floor(Math.random() * 22) + 1;
+
+                fetch("https://ghibliapi.vercel.app/films")
+                .then(respuesta => respuesta.json())
+                .then(datos => {
+
+                    const RandomIndex = Math.floor(Math.random() * datos.length);
+                    const peli = datos[RandomIndex];
+                    
+                    //4. Inyectamos nuestro diseño usando Plantillas Literales (semana 7)//
+                    contenedor.innerHTML = ` 
+                    <div>
+                        <img src= "${peli.image}" width="200">
+                        <h2 class = "nombre-api">${peli.title}</h2>
+                        <img src= "${peli.movie_banner}">
+                        <p> ${peli.description} </p>
+                    </div>
+
+                        `;
+
+                        console.log(peli)
+                })
+
+                .catch(error => {
+                    //5. Manejo de errores (Sí se cae el interfaz )
+                    contenedor.innerHTML = "<p> x Hubo un error:(</p>";
+                });
+
+            }
+        </script>
+    </body>
+</html>

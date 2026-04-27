@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+     <meta charset="UTF-8">
+     <link rel="stylesheet" href="style.css">
+
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap" rel="stylesheet">
+    
+    
+     <title>Capibara Azul</title>
+    </head>
+
+
+    <body class = "body">
+        <header>
+                <div class = "decorMenu">
+                    <nav>
+
+                        <button class = "btnOscuro" onclick = "modoOscuro()">⋆ ˚｡⋆୨Día☀️୧⋆ ˚｡⋆</button>
+
+                    <a href = "Menu.html"> Menú</a>
+                    <a href = "Nosotros.html"> Sobre nosotros</a>
+                     <a href = "Contactos.html"> Contactos</a>
+
+                        </nav>
+                <img class = "decorLogo" src = CapiCoffe.png>
+                
+
+                </div>
+
+        </header>
+
+            
+
+                <h1>CapiCoffe</h1>
+
+                <section>
+              
+                        <div class = grid>
+
+                        <h2>⭐Despierta tu creatividad⭐</h2>
+
+                    <img class = "capiCoffeeFoto2" src = CapiCoffe-Fotos1.png>
+                    <img class = "capiCoffeeFoto1" src = CapiCoffe-Fotos2.png>
+                    <img class = "capiCoffeeFoto2" src = CapiCoffe-Fotos3.png>
+                    </div>
+
+                </section>
+
+                <section>
+
+                    <h2> Servicios</h2>
+
+                    <div class = grid-2>
+
+                        <div class = gridItem>
+                        <h3>Experiencia CapiCoffe</h3>
+                        
+                            <li>Atención cercana y amigable</li>
+                            <li>Ambiente creativo y divertida</li>
+                            <li>Momentos especiales en cada taza</li>
+                        </ul>
+                            
+                        </div>
+
+                        <div class = gridItem-1>
+                    <h3>Experiencia dulce y creativa</h3>
+                        <ul>
+                            <li>Productos inspirados en tendencias de cafetería, como bebidas especiales o postres innovadores</li>
+                            <li>Sabores de temporada, que cambian durante el año para sorprender a los visitantes</li>
+                            <li>Opciones perfectas para compartir o disfrutar individualmente</li>
+                        </ul>  
+                        </div>
+
+                        <div class = gridItem-1>
+                    <h3>Lugar ideal para...</h3>
+                        <ul>
+                            <li>Estudiar</li>
+                            <li>Trabajar</li>
+                            <li>Reunirse con amigos o simplemente...</li>
+                            <li>Relajarse!</li>
+                        </ul> 
+
+                        </div>
+
+                        <div class = gridItem-1>
+                     <h3>Panadería y repostería</h3>
+                        <ul>
+                            <li>Croissants recién horneados, crujientes por fuera y suaves por dentro</li>
+                            <li>Galletas artesanales con sabores clásicos y tendencias modernas</li>
+                            <li>Postres dulces y panes especiales, ideales para acompañar una bebida</li>
+                            <li>Variedad de antojos del día, que cambian para ofrecer nuevas experiencias a los clientes</li>
+                        </ul> 
+                        </div>
+
+                     </div>
+
+                </section>
+
+                <section>
+
+                <h2>Tendencias</h2>
+
+                <img class = "productos" src = ListadeProductos.png>
+
+                <button class = "btnComprar" onclick = btnComprar()> COMPRA AHORA!</button>
+
+                </section>
+
+            </body>
+
+            <script>
+                function modoOscuro() {
+                    let body = document.querySelector(".body");
+                    let boton = document.querySelector(".btnOscuro");
+
+                    body.classList.toggle("modo-oscuro");
+
+                    // let cuerpo = document.body
+                    // cuerpo.classList.toggle("modo-oscuro");
+
+                    
+
+                 if (body.classList.contains("modo-oscuro")) {
+                 boton.innerHTML = "⋆ ˚｡⋆୨Noche🌙୧⋆ ˚｡⋆";
+                  } else {
+                 boton.innerHTML = "⋆ ˚｡⋆୨Día☀️୧⋆ ˚｡⋆";
+                     }
+                  }
+                
+            </script>
+
+</html>

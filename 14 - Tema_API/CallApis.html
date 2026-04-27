@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang = "es">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="CallApisStyle.css">
+        <title>Conexión API | Fetch</title>
+    </head>
+    <body>
+        <div id="tarjeta-contenedor">
+            <!--Lo que vamos a cmabiar-->
+            <p>Aún no hay datos. Presiona el botón.</p>
+        </div>
+
+        <button onclick="llamarAPI()">Traer personaje</button>
+
+        <script>
+            function llamarAPI() {
+                const contenedor = document.getElementById("tarjeta-contenedor");
+                //1. UX: Mostramos al usuario  que estamos cargando //
+
+                //2. Generamos un número aletario del 1 al 826 (Total de personaje)//
+
+                contenedor.innerHTML = "<p> Viajamos por el multiuniverso...</p>";
+
+                //3.Enviamos a nuestro "mensajero" a la URL de la API//
+                let idAleatorio = Math.floor(Math.random() * 826) + 1;
+
+                fetch('https://rickandmortyapi.com/api/character/' + idAleatorio)
+                .then(respuesta => respuesta.json())
+                .then(datos => {
+                    
+                    //4. Inyectamos nuestro diseño usando Plantillas Literales (semana 7)//
+                    contenedor.innerHTML = ` 
+                    <div>
+                        <img src= "${datos.image}" alt="Foto de ${datos.name}" class="avatar-api">
+                        <h2 class = "nombre-api">${datos.name}</h2>
+                        <span class = "estado-api">Especie: ${datos.especies}</span>
+                        <p style="color: #2b2d42; font-weight: bold;">Origen: ${datos.origin.name} </p>
+                    </div>
+
+                        `;
+
+                        console.log(datos)
+                })
+
+                .catch(error => {
+                    //5. Manejo de errores (Sí se cae el interfaz )
+                    contenedor.innerHTML = "<p> x Hubo un error en la matrix </p>";
+                });
+            }
+        </script>
+    </body>
+</html>

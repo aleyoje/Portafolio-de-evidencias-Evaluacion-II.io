@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>Ejemplo de Canva</title>
+    </head>
+
+    <body>
+        <canvas id="miLienzo" width="500" height="400"></canvas>
+        <script>
+            //1. Atrapamos el caballete
+            let canvas = document.getElementById("miLienzo");
+            //2. Agarramos el pincel (Contexto 2D)
+            let ctx = canvas.getContext("2d");
+
+            //3. Dibujamos
+            ctx.beginPath();//"Aviso que voy a emprezar a dibujar"
+            ctx.moveTo(50,50);//Muevo el làpiz a la coordenada X:50, Y:50
+            ctx.lineTo(200,200);//Trazo una lìnea hasta x:200, Y:200
+            ctx.strokeStyle = "blue"; //Escojo el color de la tinta
+            ctx.lineWidth = 5; //Grosor de la línea
+            ctx.stroke(); //Aplica la tinta
+        </script>
+    </body>
+</html>

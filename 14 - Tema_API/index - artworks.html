@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang = "es">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>Conexión API | Fetch</title>
+    </head>
+    <body>
+        <div id="tarjeta-contenedor">
+            <!--Lo que vamos a cmabiar-->
+            <p>Aún no hay datos. Presiona el botón.</p>
+        </div>
+
+        <button onclick="llamarAPI()">Traer personaje</button>
+
+        <script>
+            function llamarAPI() {
+                const contenedor = document.getElementById("tarjeta-contenedor");
+                //1. UX: Mostramos al usuario  que estamos cargando //
+
+                //2. Generamos un número aletario del 1 al 826 (Total de personaje)//
+
+                contenedor.innerHTML = "<p> Viajamos por el museo...</p>";
+
+                //3.Enviamos a nuestro "mensajero" a la URL de la API//
+                let idAleatorio = Math.floor(Math.random() * 131565) + 1;
+
+                fetch('https://api.artic.edu/api/v1/artworks/' + idAleatorio)
+                .then(respuesta => respuesta.json())
+                .then(obra => {
+
+                    const item = obra.data;
+
+            // Construimos la URL de la imagen
+            const imagen = item.image_id
+                 ? `https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg`
+                  : "https://via.placeholder.com/300x300?text=Sin+imagen";
+
+                    
+                    //4. Inyectamos nuestro diseño usando Plantillas Literales (semana 7)//
+                    contenedor.innerHTML = ` 
+                    <div>
+                        <h2 class = "identifier">${item.id}</h2>
+                        <h2 class = "nombre-api">${item.title}</h2>
+                        <img src="${imagen}" class="avatar-api">
+                        <h2 class = "nombre-api">${item.place_of_origin}</h2>
+                    </div>
+
+                        `;
+
+                        console.log(item);
+                        //console.log("IMAGE ID:", item.image_id);
+                })
+
+                .catch(error => {
+                    //5. Manejo de errores (Sí se cae el interfaz )
+                    contenedor.innerHTML = "<p> x Hubo un error en la matrix </p>";
+                });
+            }
+        </script>
+    </body>
+</html>

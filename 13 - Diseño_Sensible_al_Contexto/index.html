@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Reto: Reproductor Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class = "Tarjeta">
+        
+        <!-- <img src="">Imagen de</img> -->
+        <h1>Señal de rescate 🚑</h1>
+
+        <button onclick = "ObtenerUbicacion()">Sí, rastrear mi ubicación</button>
+
+        <h2 id="longitudResultado">Longitud</h2>
+        <h2 id="latitudResultado">Latitud</h2>
+
+        <h3 id="Mensaje">¿Necesitas ayuda?</h3>
+
+
+
+    </div>
+
+
+<script>
+
+
+     function ObtenerUbicacion(){
+
+         const longContenedor = document.getElementById("longitudResultado");
+         const latContenedor = document.getElementById ("latitudResultado");
+         const Mensaje = document.getElementById("Mensaje");
+
+        longContenedor.textContent = "Analizando longitud";
+        latContenedor.textContent = "Analizando latitud";
+
+         navigator.geolocation.getCurrentPosition(exito,rechazo)
+
+
+     function exito(position) {
+
+         const longitud = position.coords.longitude;
+         const latitud = position.coords.latitude;
+
+         latContenedor.textContent = "Latitud:  " + latitud;
+         longContenedor.textContent = "Longitud: " + longitud;
+
+         Mensaje.textContent = "Accesso exitoso, ayuda en camino";
+         Mensaje.style.color="green";
+     }
+
+     function rechazo() {
+         Mensaje.textContent = "Acceso a ubicación rechazada";
+         Mensaje.style.color="red";
+     }
+    }
+
+
+
+</script>
+
+</body>
+
+</html>
